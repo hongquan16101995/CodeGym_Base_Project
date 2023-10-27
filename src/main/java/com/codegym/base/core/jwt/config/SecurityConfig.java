@@ -1,12 +1,13 @@
-package com.codegym.base.core.security.config;
+package com.example.candy.config;
 
-import com.codegym.base.core.security.jwt.CustomAccessDeniedHandler;
-import com.codegym.base.core.security.jwt.JwtAuthenticationFilter;
-import com.codegym.base.core.security.jwt.RestAuthenticationEntryPoint;
-import com.codegym.base.core.security.service.UserService;
+import com.example.candy.jwt.CustomAccessDeniedHandler;
+import com.example.candy.jwt.JwtAuthenticationTokenFilter;
+import com.example.candy.jwt.RestAuthenticationEntryPoint;
+import com.example.candy.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -25,24 +26,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private UserService userService;
 
     @Bean
-    public JwtAuthenticationFilter jwtAuthenticationFilter() {
-        return new JwtAuthenticationFilter();
+    public JwtAuthenticationTokenFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationTokenFilter();
     }
 
     @Bean(BeanIds.AUTHENTICATION_MANAGER)
     @Override
     public AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
-    }
-
-    @Bean
-    public RestAuthenticationEntryPoint restServicesEntryPoint() {
-        return new RestAuthenticationEntryPoint();
-    }
-
-    @Bean
-    public CustomAccessDeniedHandler customAccessDeniedHandler() {
-        return new CustomAccessDeniedHandler();
     }
 
     @Bean
@@ -55,12 +46,26 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder(10));
     }
 
-    @Override
+    @Bean
+    public RestAuthenticationEntryPoint restServicesEntryPoint() {
+        return new RestAuthenticationEntryPoint();
+    }
+
+    @Bean
+    public CustomAccessDeniedHandler customAccessDeniedHandler() {
+        return new CustomAccessDeniedHandler();
+    }
+
     protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().ignoringAntMatchers("/**");
+        // Disable crsf cho đường dẫn /api/**
+        http.csrf().ignoringAntMatchers("/api/**");
         http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/candies/**", "/api/categories/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

@@ -1,10 +1,9 @@
-package com.codegym.base.core.security.repository;
+package com.example.candy.repository;
 
-import com.codegym.base.core.security.model.Role;
+import com.example.candy.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IRoleRepository extends JpaRepository<Role, Long> {
-    Role findByName(String name);
 }

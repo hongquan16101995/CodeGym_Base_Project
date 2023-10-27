@@ -1,4 +1,4 @@
-package com.codegym.base.core.security.jwt;
+package com.example.candy.jwt.service;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -11,14 +11,14 @@ public class JwtResponse {
     private String type = "Bearer";
     private String username;
     private String name;
-    private final Collection<? extends GrantedAuthority> roles;
+    private final Collection<? extends GrantedAuthority> authorities;
 
-    public JwtResponse(String accessToken, Long id, String username, String name, Collection<? extends GrantedAuthority> roles) {
-        this.token = accessToken;
-        this.username = username;
-        this.roles = roles;
-        this.name = name;
+    public JwtResponse(Long id, String token, String username, String name, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
+        this.token = token;
+        this.username = username;
+        this.name = name;
+        this.authorities = authorities;
     }
 
     public String getName() {
@@ -37,12 +37,12 @@ public class JwtResponse {
         this.id = id;
     }
 
-    public String getAccessToken() {
+    public String getToken() {
         return token;
     }
 
-    public void setAccessToken(String accessToken) {
-        this.token = accessToken;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getTokenType() {
@@ -61,7 +61,7 @@ public class JwtResponse {
         this.username = username;
     }
 
-    public Collection<? extends GrantedAuthority> getRoles() {
-        return roles;
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
     }
 }

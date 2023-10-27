@@ -1,12 +1,10 @@
-package com.codegym.base.core.security.repository;
+package com.example.candy.repository;
 
-import com.codegym.base.core.security.model.User;
+import com.example.candy.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Repository
 public interface IUserRepository extends JpaRepository<User, Long> {
-    Optional<User> findByUsername(String username);
+    User findAllByUsername(String username);
 }

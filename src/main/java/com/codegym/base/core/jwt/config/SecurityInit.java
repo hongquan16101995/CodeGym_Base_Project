@@ -1,4 +1,4 @@
-package com.codegym.base.core.security.config;
+package com.example.candy.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 
