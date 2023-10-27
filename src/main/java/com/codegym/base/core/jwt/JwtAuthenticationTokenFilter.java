@@ -1,7 +1,7 @@
-package com.example.candy.jwt;
+package com.codegym.base.core.jwt;
 
-import com.example.candy.jwt.service.JwtService;
-import com.example.candy.service.impl.UserService;
+import com.codegym.base.core.jwt.service.JwtService;
+import com.codegym.base.core.jwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,4 +1,4 @@
-package com.example.candy.model;
+package com.codegym.base.core.jwt.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

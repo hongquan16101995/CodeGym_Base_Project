@@ -1,4 +1,4 @@
-package com.example.candy.jwt.service;
+package com.codegym.base.core.jwt.service;
 
 import org.springframework.security.core.GrantedAuthority;
 

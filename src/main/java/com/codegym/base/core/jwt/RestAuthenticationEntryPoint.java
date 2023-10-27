@@ -1,4 +1,4 @@
-package com.example.candy.jwt;
+package com.codegym.base.core.jwt;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

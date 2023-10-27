@@ -1,6 +1,6 @@
-package com.example.candy.repository;
+package com.codegym.base.core.jwt.repository;
 
-import com.example.candy.model.Role;
+import com.codegym.base.core.jwt.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

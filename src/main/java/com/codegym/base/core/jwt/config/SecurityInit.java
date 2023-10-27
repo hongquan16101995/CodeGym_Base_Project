@@ -1,4 +1,4 @@
-package com.example.candy.config;
+package com.codegym.base.core.jwt.config;
 
 import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
 

@@ -1,6 +1,6 @@
 package com.codegym.base.core.jwt.dto;
 
-import com.example.candy.model.Role;
+import com.codegym.base.core.jwt.model.Role;
 
 import java.util.Set;
 

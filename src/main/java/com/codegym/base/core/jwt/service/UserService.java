@@ -1,17 +1,15 @@
-package com.example.candy.service.impl;
+package com.codegym.base.core.jwt.service;
 
-import com.example.candy.model.Role;
-import com.example.candy.model.User;
-import com.example.candy.model.UserPrinciple;
-import com.example.candy.model.dto.UserDTO;
-import com.example.candy.repository.IRoleRepository;
-import com.example.candy.repository.IUserRepository;
+import com.codegym.base.core.jwt.model.User;
+import com.codegym.base.core.jwt.model.UserPrinciple;
+import com.codegym.base.core.jwt.repository.IUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
 
 @Service
 public class UserService implements UserDetailsService {

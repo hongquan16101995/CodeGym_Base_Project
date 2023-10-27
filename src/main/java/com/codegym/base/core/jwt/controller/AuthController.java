@@ -1,9 +1,9 @@
-package com.example.candy.controller;
+package com.codegym.base.core.jwt.controller;
 
-import com.example.candy.model.User;
-import com.example.candy.jwt.service.JwtResponse;
-import com.example.candy.jwt.service.JwtService;
-import com.example.candy.service.impl.UserService;
+import com.codegym.base.core.jwt.service.JwtResponse;
+import com.codegym.base.core.jwt.service.JwtService;
+import com.codegym.base.core.jwt.model.User;
+import com.codegym.base.core.jwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package com.example.candy.model;
+package com.codegym.base.core.jwt.model;
 
 import lombok.Data;
 

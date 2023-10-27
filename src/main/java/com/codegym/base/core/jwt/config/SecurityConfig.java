@@ -1,9 +1,9 @@
-package com.example.candy.config;
+package com.codegym.base.core.jwt.config;
 
-import com.example.candy.jwt.CustomAccessDeniedHandler;
-import com.example.candy.jwt.JwtAuthenticationTokenFilter;
-import com.example.candy.jwt.RestAuthenticationEntryPoint;
-import com.example.candy.service.impl.UserService;
+import com.codegym.base.core.jwt.CustomAccessDeniedHandler;
+import com.codegym.base.core.jwt.JwtAuthenticationTokenFilter;
+import com.codegym.base.core.jwt.RestAuthenticationEntryPoint;
+import com.codegym.base.core.jwt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -61,11 +61,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().ignoringAntMatchers("/api/**");
         http.httpBasic().authenticationEntryPoint(restServicesEntryPoint());
         http.authorizeRequests()
-                .antMatchers("/api/auth/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/candies/**", "/api/categories/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
-                .antMatchers(HttpMethod.PUT, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
+                .antMatchers("/**").permitAll()
+//                .antMatchers(HttpMethod.GET, "/api/candies/**", "/api/categories/**").permitAll()
+//                .antMatchers(HttpMethod.POST, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
+//                .antMatchers(HttpMethod.DELETE, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
+//                .antMatchers(HttpMethod.PUT, "/api/candies/**", "/api/categories/**").hasAnyRole("ADMIN")
                 .anyRequest().authenticated()
                 .and().csrf().disable();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)

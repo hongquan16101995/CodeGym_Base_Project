@@ -1,6 +1,6 @@
-package com.example.candy.jwt.service;
+package com.codegym.base.core.jwt.service;
 
-import com.example.candy.model.UserPrinciple;
+import com.codegym.base.core.jwt.model.UserPrinciple;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
